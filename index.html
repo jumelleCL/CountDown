@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Count timer</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1></h1>
+    <div class="select-day" id="selector">
+        <select name="day" id="dayOptions">
+            <option disabled selected>Select </option>
+            <option id="opt2">Hall</option>
+            <option id="opt1">Nav</option>
+            <option id="opt3">Pasc</option>
+            <option id="opt4">Año</option>
+            <option id="opt5">Other</option>
+        </select>
+        <div id="other-select">
+            <button id="back-button">Back</button>
+            <input type="date" name="day-select" id="day-select">
+        </div>
+    </div>
+    <div class="counter">
+    
+        <div class="countdown-container">
+            <div class="cd-el days-c">
+                <p class="big-text" id="days">0</p>
+                <span>days</span>
+            </div>
+            <div class="cd-el hours-c">
+                <p class="big-text" id="hours">0</p>
+                <span>hours</span>
+            </div>
+            <div class="cd-el mins-c">
+                <p class="big-text" id="mins">0</p>
+                <span>mins</span>
+            </div>
+            <div class="cd-el seconds-c">
+                <p class="big-text" id="secs">0</p>
+                <span>seconds</span>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

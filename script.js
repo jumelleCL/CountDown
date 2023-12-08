@@ -24,6 +24,7 @@ const dayInput = document.getElementById('day-select');
 otherday.style.display = 'none';
 
 
+// Function to know how many days, hours and seconds are left until the day selected
 function countDown() {
     const currentDate = new Date();
     let newYearDate;
@@ -31,9 +32,7 @@ function countDown() {
     if (select.value === 'Other') {
         newYearDate = new Date(dayInput.value);
 
-        // Comparar la fecha ingresada con la fecha actual
         if (newYearDate < currentDate) {
-            // Si la fecha ingresada es anterior a la fecha actual, sumar un año
             newYearDate.setFullYear(newYearDate.getFullYear() + 1);
         }
     } else {
@@ -47,7 +46,6 @@ function countDown() {
 
     const totalSeconds = (newYearDate - currentDate) / 1000;
 
-    // Asegurarse de que totalSeconds sea positivo
     const positiveTotalSeconds = Math.abs(totalSeconds);
 
     const days = Math.floor(positiveTotalSeconds / 3600 / 24);
@@ -64,10 +62,8 @@ function countDown() {
 function formatTime(time) {
     return time < 10 ? (`0${time}`) : time;
 }
-function updateCountdown() {
-    countDown();
-}
 
+// Event to change the style in base of which day is selected
 select.addEventListener('change', () => {
     switch (select.value) {
         case 'Halloween':
@@ -94,27 +90,58 @@ select.addEventListener('change', () => {
             daySelected = '2024/03/31';
             fondoSelect.style.backgroundImage = "url('https://images.pexels.com/photos/6897341/pexels-photo-6897341.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')";
             for (let i = 0; i < numbers.length; i++) {
+                numbers[i].style.color = 'darksalmon';
+            }
+            for (let i = 0; i < text.length; i++) {
+                text[i].style.color = 'black';
+            }
+            break;
+        case 'New Year':            
+            daySelected = '2024/01/01';
+            fondoSelect.style.backgroundImage ='url("https://images.pexels.com/photos/634688/pexels-photo-634688.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1")';
+            for (let i = 0; i < numbers.length; i++) {
                 numbers[i].style.color = 'white';
             }
             for (let i = 0; i < text.length; i++) {
                 text[i].style.color = 'white';
             }
             break;
-        case 'New Year':
-            daySelected = '2024/01/01';
-            break;
         case 'Epiphany':
             daySelected = '2024/01/06';
+            fondoSelect.style.backgroundImage = 'url("https://images.pexels.com/photos/327472/pexels-photo-327472.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1")';
+            for (let i = 0; i < numbers.length; i++) {
+                numbers[i].style.color = 'white';
+            }
+            for (let i = 0; i < text.length; i++) {
+                text[i].style.color = 'white';
+            }
+            break;
+        case 'Valentines':
+            daySelected = '2024/02/14';
+            fondoSelect.style.backgroundImage = 'url("https://images.pexels.com/photos/1447367/pexels-photo-1447367.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1")';
+            for (let i = 0; i < numbers.length; i++) {
+                numbers[i].style.color = 'firebrick';
+            }
+            for (let i = 0; i < text.length; i++) {
+                text[i].style.color = 'white';
+            }
             break;
         case 'Other':
             select.style.display = 'none';
             otherday.style.display = 'flex';
+            fondoSelect.style.backgroundImage = 'url("https://static.vecteezy.com/system/resources/thumbnails/019/167/032/original/beautiful-fresh-snow-patterns-winter-background-close-up-texture-selective-focus-and-shallow-dof-backcountry-skiing-after-in-powder-day-free-video.jpg")';
+            for (let i = 0; i < numbers.length; i++) {
+                numbers[i].style.color = 'black';
+            }
+            for (let i = 0; i < text.length; i++) {
+                text[i].style.color = 'black';
+            }
             return; 
         default:
             break;
     }
 
-    updateCountdown();
+    countDown();
 });
 
 back.addEventListener('click', ()=>{
@@ -125,10 +152,10 @@ back.addEventListener('click', ()=>{
 dayInput.addEventListener('change', () => {
     const selectedDate = dayInput.value;
     daySelected = selectedDate;
-    updateCountdown();
+    countDown();
 });
 
 
 
-updateCountdown();
-setInterval(() => updateCountdown(), 1000);
+countDown();
+setInterval(() => countDown(), 1000);

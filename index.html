@@ -15,7 +15,8 @@
             <option id="opt3">Easter</option>
             <option id="opt4">New Year</option>
             <option id="opt6">Epiphany</option>
-            <option id="opt5">Other</option>
+            <option id="opt7">Valentines</option>
+            <option id="other">Other</option>
         </select>
         <div id="other-select">
             <button id="back-button">Back</button>
@@ -44,5 +45,13 @@
         </div>
     </div>
     <script src="script.js"></script>
+    <script>
+        var tomorrow = new Date();
+        tomorrow.setDate(tomorrow.getDate() + 1);
+      
+        var tomorrowFormatted = tomorrow.toISOString().split('T')[0];
+      
+        document.getElementById('day-select').value = tomorrowFormatted;
+      </script>
 </body>
 </html>

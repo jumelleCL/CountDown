@@ -1,4 +1,4 @@
-let daySelected = '2024/03/21';
+let daySelected = '2024/01/01';
 const other = document.getElementById('opt5');
 const dayEl = document.getElementById('days');
 const hoursEl = document.getElementById('hours');
